@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Alpine Js</title>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+	<h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
 
+	<br>
+	<!-- On click Count +++ -->
+	<div x-data="{ count: 0 }">
+		<button x-on:click="count++">Fav ❤️</button>
+	 
+		<span x-text="count"></span>
+	</div>
+
+	<br>
+	<!-- Toogle Content Open True-->
+	<div x-data="{
+		open: true,
+		get isOpen() { return this.open },
+		toggle() { this.open = ! this.open },
+	}">
+		<button @click="toggle()">Toggle Content True</button>
+	 
+		<div x-show="isOpen">
+			Content...
+		</div>
+	</div>
+
+	<br>
+
+	<!-- Toogle Content Open False-->
+	<div x-data="{
+		open: false,
+		get isOpen() { return this.open },
+		toggle() { this.open = ! this.open },
+	}">
+		<button @click="toggle()">Toggle Content False</button>
+	 
+		<div x-show="isOpen">
+			Content...
+		</div>
+	</div>
+
+	<br>
+
+	<!-- Single-element components -->
+	<div x-data="{ open: true }">
+		<button @click="open = false" x-show="open">Hide Me</button>
+	</div>
+
+	<br>
+
+	<!-- Here's a simple example of using x-model  -->
+	<div x-data="{ message: '' }">
+		<input type="text" x-model="message">
+	 
+		<button x-on:click="message = 'changed'">Change Message</button>
+	</div>
+
+	<br>
+
+	<!-- Single checkbox with boolean -->
+	<input type="checkbox" id="checkbox" x-model="show">
+	<label for="checkbox" x-text="show">yes</label>
+
+</div>
+
+</body>
+</html>
